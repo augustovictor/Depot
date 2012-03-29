@@ -1,0 +1,31 @@
+<% if notice %>
+	<p id="notice">
+		<%= notice %>
+	</p>
+	
+	<h1>
+		Your programatic Catalog
+	</h1>
+<% end %>
+	
+	<% @products.each do |product| %>
+	
+	<div class="entry">
+		<%= image_tag(product.image_url) %>
+		
+		<h3>
+			<%= product.title %>
+		</h3>
+		
+		<%= sanitize(product.description)%>
+		
+		<div class="price_line">
+			<span class="price">
+				<%= product.price %>
+                <%= button_to 'Add to cart', line_items_path(:product_id => product) %>
+			</span>
+		</div>
+		
+	</div>
+	
+	<% end %>
